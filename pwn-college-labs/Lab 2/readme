@@ -1,0 +1,119 @@
+CSCI 400 - Lab 2: Data Handling & Cryptography
+https://img.shields.io/badge/pwn.college-Lab%25202-blue
+https://img.shields.io/badge/Python-3.x-green
+https://img.shields.io/badge/Cryptography-Fundamentals-orange
+
+Hands-on cybersecurity lab covering data manipulation and cryptographic principles through practical challenges on the pwn.college platform.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 2, divided into two main sections:
+
+🔍 Data Handling
+Password Extraction - Reading hardcoded credentials from binaries
+
+File Input Handling - Working with external password files
+
+Encoding Schemes - Binary, hexadecimal, and Base64 data manipulation
+
+Command-line Arguments - Program input via command-line parameters
+
+🔐 Cryptography
+XOR Operations - Decimal, hexadecimal, and ASCII implementations
+
+One-Time Pad - Encryption, decryption, and tampering attacks
+
+AES-ECB - Block cipher decryption with PKCS#7 padding
+
+Diffie-Hellman - Key exchange implementation
+
+RSA - Public-key cryptography decryption
+
+SHA-256 - Hash collision attacks
+
+🛠️ Skills Demonstrated
+python
+# Example: XOR decryption
+def xor_decrypt(encrypted: bytes, key: int) -> bytes:
+    return bytes([b ^ key for b in encrypted])
+
+# Example: Password extraction from source
+def extract_password(source_code: str) -> str:
+    # Pattern matching for hardcoded credentials
+    pass
+Reverse Engineering - Binary analysis and source code inspection
+
+Cryptographic Implementation - Various encryption/decryption methods
+
+Scripting - Python automation for brute-force attacks
+
+Data Encoding - Hex, Base64, and binary format handling
+
+Security Analysis - Identifying cryptographic vulnerabilities
+
+📂 Challenge Solutions
+Challenge	Category	Solution Approach
+What's the Password?	Data Handling	Source code analysis + echo -n "password" | /challenge/runme
+Binary & Hex Encoding	Data Handling	Hexadecimal input conversion
+One-Time Pad	Cryptography	XOR operations with hex keys
+AES-ECB	Cryptography	Python decryption with PKCS#7 unpadding
+RSA Decryption	Cryptography	Modular exponentiation with private key
+SHA-256 Collision	Cryptography	Brute-force prefix matching
+💻 Code Examples
+AES Decryption
+python
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
+
+def decrypt_aes_ecb(key_hex: str, ciphertext_hex: str) -> str:
+    key = bytes.fromhex(key_hex)
+    ciphertext = bytes.fromhex(ciphertext_hex)
+    
+    cipher = AES.new(key, AES.MODE_ECB)
+    plaintext = unpad(cipher.decrypt(ciphertext), AES.block_size)
+    
+    return plaintext.decode()
+OTP Tampering
+python
+def otp_tamper(ciphertext_hex: str, original_plaintext: str, target_plaintext: str) -> str:
+    # Recover key by XORing ciphertext with known plaintext
+    ciphertext = bytes.fromhex(ciphertext_hex)
+    original = original_plaintext.encode()
+    key = bytes([c ^ o for c, o in zip(ciphertext, original)])
+    
+    # Forge new ciphertext for target plaintext
+    target = target_plaintext.encode()
+    forged_ciphertext = bytes([t ^ k for t, k in zip(target, key)])
+    
+    return forged_ciphertext.hex()
+🎯 Key Insights
+OTP provides confidentiality but not integrity - ciphertexts can be modified without detection
+
+Proper input formatting is critical - hex vs Base64 requirements vary by challenge
+
+Source code inspection often reveals hardcoded credentials
+
+Command-line tools (echo, printf, base64) are essential for data manipulation
+
+📝 Usage
+bash
+# Run individual challenges
+python3 solutions/xor_decryption.py
+python3 solutions/aes_decrypt.py
+
+# View challenge source code
+cat /challenge/runme
+
+# Test solutions
+echo -n "password" | /challenge/runme
+📚 Requirements
+Python 3.x
+
+pwn.college access
+
+Basic Linux command-line tools
+
+PyCryptodome (for AES challenges)
+
+📄 License
+Academic Use - CSCI 400 Course Materials
+
