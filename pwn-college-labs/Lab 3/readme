@@ -1,0 +1,85 @@
+CSCI 400 - Lab 3: User Privilege Escalation & Authentication
+https://img.shields.io/badge/pwn.college-Lab%25203-blue
+https://img.shields.io/badge/Linux-User%2520Management-red
+https://img.shields.io/badge/Security-Privilege%2520Escalation-orange
+
+CSCI 400 - Lab 3: User Privilege Escalation & Authentication
+
+This repository documents my work on CSCI 400 Lab 3, which focuses on Linux user management, privilege escalation techniques, and authentication system vulnerabilities. The lab explores fundamental system administration concepts through practical exercises in user switching, password security, and privilege management. Key challenges included using the su command to switch to both root and other user accounts with provided credentials, cracking password hashes from shadow files using John the Ripper to recover user passwords, and leveraging sudo privileges to access protected system files without authentication. Through these exercises, I gained hands-on experience with Linux authentication mechanisms, password security weaknesses, and various methods of privilege escalation that are essential for both system administration and security testing. The lab emphasized the importance of strong password policies, proper sudo configuration, and understanding how authentication systems can be compromised through both legitimate access and security vulnerabilities.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 3, focusing on Linux user management and privilege escalation techniques.
+
+🔍 Core Challenges
+Becoming root with su - Switching to root user with known credentials
+
+Other users with su - Accessing specific user accounts via password authentication
+
+Cracking passwords - Using John the Ripper to recover passwords from shadow files
+
+Using sudo - Leveraging sudo privileges to access protected files
+
+🛠️ Skills Demonstrated
+User Management - Switching between user accounts with su command
+
+Password Cracking - Using John the Ripper to crack Linux password hashes
+
+Privilege Escalation - Gaining elevated access through various methods
+
+Linux Authentication - Understanding shadow files and password security
+
+Sudo Configuration - Leveraging sudo rights for system access
+
+📂 Challenge Solutions
+Challenge	Method	Credentials/Tools
+Becoming root with su	su command	Password: hack-the-planet
+Other users with su	su zardus	Password: dont-hack-me
+Cracking passwords	John the Ripper	Cracked password: aardvark
+Using sudo	sudo cat /flag	Sudo policy configuration
+💻 Command Examples
+bash
+# Switching to root user
+su
+# Password: hack-the-planet
+cat /flag
+
+# Switching to specific user
+su zardus
+# Password: dont-hack-me
+/challenge/run
+
+# Password cracking
+john /challenge/shadow-lask
+john --show /challenge/shadow-lask
+
+# Using sudo privileges
+sudo cat /flag
+🔐 Security Insights
+Shadow files containing password hashes can be cracked with tools like John the Ripper
+
+Weak passwords are vulnerable to brute-force attacks
+
+Sudo configurations can provide privileged access without password prompts
+
+User switching is a common privilege escalation technique
+
+📝 Usage
+bash
+# Clone repository and explore solutions
+git clone https://github.com/username/csci400-lab3.git
+cd csci400-lab3
+
+# Review challenge documentation
+cat challenges/su_privileges.md
+cat challenges/password_cracking.md
+📚 Requirements
+Linux environment
+
+John the Ripper (for password cracking)
+
+Sudo access
+
+Basic Linux command-line knowledge
+
+📄 License
+Academic Use - CSCI 400 Course Materials
