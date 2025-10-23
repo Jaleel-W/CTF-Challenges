@@ -1,0 +1,128 @@
+CSCI 400 - Lab 5: Advanced Access Control & UNIX Permissions
+https://img.shields.io/badge/pwn.college-Lab%25205-blue
+https://img.shields.io/badge/Linux-Access%2520Control-red
+https://img.shields.io/badge/Security-Privilege%2520Escalation-orange
+https://img.shields.io/badge/Permissions-UNIX-green
+
+Comprehensive exploration of UNIX access control mechanisms through 12 progressive challenges covering file permissions, SETUID exploitation, group management, and multi-user privilege escalation.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 5, focusing on advanced UNIX access control systems and privilege escalation techniques.
+
+🔍 Challenge Progression
+Levels 1-3: Basic file ownership and permission manipulation
+
+Levels 4-5: SETUID binary exploitation with /bin/cat and /bin/cp
+
+Levels 6-10: Group-based access control and user switching
+
+Levels 11-12: Complex multi-user directory traversal and permission chains
+
+🛠️ Skills Demonstrated
+bash
+# File permission manipulation
+chmod 400 /flag
+chown user:group /flag
+
+# SETUID exploitation
+/bin/cat /flag
+/bin/cp /flag /tmp/copy
+
+# User and group management
+su target_user
+newgrp target_group
+grep group_name /etc/group
+UNIX Permission Models: Understanding owner/group/other permissions (rwx)
+
+SETUID Exploitation: Leveraging privileged binaries for root access
+
+Multi-User Access Control: Switching between users to bypass permission restrictions
+
+Group Membership Analysis: Using /etc/group to identify access paths
+
+Directory Permission Navigation: Traversing complex permission structures in /tmp
+
+📂 Challenge Solutions
+Level	Key Technique	Command Examples
+1-3	Basic Permission Manipulation	chmod, chown
+4-5	SETUID Binary Exploitation	/bin/cat /flag, /bin/cp /flag /tmp/copy
+6-10	User/Group Switching	su user, newgrp group, password authentication
+11-12	Complex Multi-User Access	Nested su commands, directory traversal
+💻 Technical Implementation
+SETUID Binary Exploitation
+bash
+# Check for SETUID binaries
+ls -l /bin/cat
+# Output: -rwsr-xr-x (s indicates SETUID)
+
+# Exploit SETUID cat
+/bin/cat /flag
+
+# Exploit SETUID cp with output redirection
+/bin/cp /flag /dev/stdout > /tmp/accessible_copy
+Multi-User Access Chain
+bash
+# Identify group membership
+grep target_group /etc/group
+
+# Switch to target user with provided credentials
+su target_user
+# Enter password: provided_password
+
+# Access restricted files
+cat /flag
+Complex Directory Navigation
+bash
+# Navigate through multiple user contexts
+su user1
+cd /tmp/dir1
+su user2  
+cd subdir
+su user3
+cat target_file
+🔐 Security Insights
+SETUID binaries execute with owner privileges, creating potential privilege escalation vectors
+
+File ownership grants permission modification rights even with 000 permissions
+
+Group-based permissions provide alternative access paths without root privileges
+
+Multi-user environments require careful permission design to prevent unauthorized access
+
+Directory permissions control traversal and file discovery capabilities
+
+🎯 Key Techniques Mastered
+Permission Bit Manipulation: Octal and symbolic permission notation
+
+SETUID Identification: Recognizing and exploiting privileged binaries
+
+User Context Switching: Leveraging multiple user accounts for access
+
+Group Membership Analysis: Mapping access paths through group relationships
+
+Directory Permission Navigation: Understanding execute vs read permissions on directories
+
+📝 Usage
+bash
+# Clone and explore access control techniques
+git clone https://github.com/username/csci400-lab5.git
+cd csci400-lab5
+
+# Review challenge solutions
+cat solutions/level1-3_basic_permissions.md
+cat solutions/level4-5_setuid_exploitation.md
+cat solutions/level6-12_advanced_access.md
+
+# Practice in Linux environment
+./practice_scripts/setuid_demo.sh
+📚 Requirements
+Linux environment
+
+Basic UNIX command-line familiarity
+
+Understanding of file permission models
+
+Access to pwn.college platform for original challenges
+
+📄 License
+Academic Use - CSCI 400 Course Materials
