@@ -1,0 +1,119 @@
+CSCI 400 - Lab 4: Linux Filesystem Permissions & Privilege Escalation
+https://img.shields.io/badge/pwn.college-Lab%25204-blue
+https://img.shields.io/badge/Linux-Permissions-red
+https://img.shields.io/badge/Security-Privilege%2520Escalation-orange
+
+Hands-on exploration of Linux filesystem permissions, ownership, and advanced privilege escalation techniques through the SUID mechanism.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 4, focusing on Linux filesystem permissions and advanced privilege escalation methods.
+
+🔍 Core Challenges
+Changing File Ownership - Using chown to modify file ownership
+
+Groups and Files - Managing group permissions with chgrp
+
+Changing Permissions - Modifying file access permissions with chmod
+
+Executable Files - Setting execute permissions on binaries
+
+The SUID Bit - Exploiting Set User ID binaries for privilege escalation
+
+🛠️ Skills Demonstrated
+bash
+# File ownership manipulation
+chown hacker /flag
+
+# Group permission management  
+chgrp hacker /flag
+
+# Permission modification
+chmod +r /flag
+
+# SUID bit exploitation
+chmod u+s /challenge/getroot
+Filesystem Permissions - Understanding read, write, execute permissions
+
+Ownership Management - Changing file owners and groups
+
+SUID Exploitation - Leveraging Set User ID binaries for root access
+
+Permission Bit Manipulation - Using symbolic and octal permission notation
+
+Privilege Escalation - Gaining elevated access through permission misconfigurations
+
+📂 Challenge Solutions
+Challenge	Method	Key Commands
+Changing File Ownership	chown command	chown hacker /flag
+Groups and Files	chgrp command	chgrp hacker /flag
+Changing Permissions	chmod command	chmod +r /flag
+The SUID Bit	SUID bit setting	chmod u+s /challenge/getroot
+💻 Technical Implementation
+SUID Bit Exploitation
+bash
+# Check current permissions
+ls -l /challenge/getroot
+
+# Set SUID bit to run as owner (root)
+chmod u+s /challenge/getroot
+
+# Execute with elevated privileges
+/challenge/getroot
+
+# Access protected flag file
+cat /flag
+Permission Management
+bash
+# Change file ownership
+chown <user> <file>
+
+# Change group ownership  
+chgrp <group> <file>
+
+# Modify permissions (symbolic)
+chmod u+r,g+w,o-x <file>
+
+# Modify permissions (octal)
+chmod 755 <file>
+🔐 Security Insights
+SUID binaries execute with the privileges of the file owner, not the executing user
+
+Permission misconfigurations can lead to privilege escalation vulnerabilities
+
+File ownership changes can bypass access restrictions
+
+Group membership provides alternative access paths to protected files
+
+🎯 Key Techniques
+Ownership Transfer: chown user:group file
+
+Group Permission Assignment: chgrp group file
+
+Permission Bit Manipulation: chmod [ugoa][+-=][rwx] file
+
+SUID Exploitation: chmod u+s binary + execution
+
+📝 Usage
+bash
+# Clone and explore permission techniques
+git clone https://github.com/username/csci400-lab4.git
+cd csci400-lab4
+
+# Review permission manipulation examples
+cat solutions/file_ownership.md
+cat solutions/suid_exploitation.md
+
+# Practice commands in Linux environment
+chmod +x practice_scripts/*.sh
+📚 Requirements
+Linux environment
+
+Basic command-line familiarity
+
+Understanding of Linux permission model
+
+Access to pwn.college platform
+
+📄 License
+Academic Use - CSCI 400 Course Materials
+
