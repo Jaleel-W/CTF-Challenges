@@ -1,0 +1,146 @@
+CSCI 400 - Lab 8: Web Communication & HTTP Protocol Fundamentals
+https://img.shields.io/badge/pwn.college-Lab%25208-blue
+https://img.shields.io/badge/HTTP-Protocol%2520Mastery-red
+https://img.shields.io/badge/Web-Communication-green
+https://img.shields.io/badge/Security-Header%2520Manipulation-orange
+
+Comprehensive exploration of HTTP protocol communication through 15 challenges covering browser interactions, command-line tools, and programmatic web requests with focus on headers, parameters, and protocol manipulation.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 8, focusing on HTTP protocol fundamentals and web communication techniques using multiple client tools and methods.
+
+🔍 Challenge Categories
+Browser-Based Requests - GUI interaction and developer tools
+
+Command-Line HTTP - Using curl and netcat for raw protocol communication
+
+Programmatic Access - Python scripts with requests library
+
+Header Manipulation - Host header spoofing and metadata exploitation
+
+Parameter Handling - GET parameters and URL encoding
+
+Response Analysis - Header inspection and source code examination
+
+🛠️ Skills Demonstrated
+python
+# Python HTTP requests
+import requests
+response = requests.get('http://challenge.localhost/task')
+print(response.text)
+
+# Raw HTTP with netcat
+echo -e "GET / HTTP/1.1\r\nHost: challenge.localhost\r\n\r\n" | nc challenge.localhost 80
+
+# Curl with custom headers
+curl -H "Host: redarena.al:80" http://challenge.localhost/entry
+HTTP Protocol Mastery - Understanding request/response cycle and status codes
+
+Header Manipulation - Customizing Host, User-Agent, and custom headers
+
+URL Encoding - Proper encoding of special characters in paths and parameters
+
+Developer Tools - Using browser dev tools for header inspection and source analysis
+
+Multiple Client Tools - Browser, curl, netcat, and Python requests
+
+Response Analysis - Extracting data from headers, body, and HTML comments
+
+📂 Challenge Solutions
+Challenge Category	Tools Used	Key Techniques
+Your First HTTP Request	Firefox Browser	Basic URL navigation
+Reading Flask	Browser + Source View	HTML source inspection
+HTTP Metadata	Browser Dev Tools	Response header analysis
+HTTP (netcat)	Netcat	Raw HTTP protocol crafting
+HTTP Paths	Netcat	Path-based routing
+HTTP (curl)	Curl	Command-line HTTP requests
+HTTP (python)	Python requests	Programmatic web access
+HTTP Host Header	Python/curl/netcat	Virtual host spoofing
+URL Encoding	Netcat	Percent-encoding in paths
+HTTP Parameters	Multiple tools	Query string manipulation
+💻 Technical Implementation
+Browser-Based Techniques
+bash
+# Start web server
+/challenge/server
+
+# Access in browser
+http://challenge.localhost/submit
+
+# Inspect headers in Developer Tools -> Network tab
+# View source for hidden comments
+Command-Line HTTP
+bash
+# Netcat raw HTTP
+nc challenge.localhost 80
+GET /verify%20solve%20gate HTTP/1.1
+Host: challenge.localhost
+
+# Curl with parameters
+curl "http://challenge.localhost/qualify?hash=ugvzzhji&security_token=zvjlgtrq&verify=pmamgpyp"
+Programmatic Access
+python
+# Python requests
+import requests
+response = requests.get('http://challenge.localhost/task')
+print(response.text)
+
+# HTTP.client for low-level control
+import http.client
+conn = http.client.HTTPConnection("challenge.localhost")
+conn.request("GET", "/request", headers={"Host": "ctflearn.com:80"})
+response = conn.getresponse()
+🔐 Security Insights
+Host header manipulation enables virtual host bypassing and cache poisoning attacks
+
+HTTP headers often contain sensitive data not visible in browser UI
+
+URL encoding is essential for proper path and parameter transmission
+
+Multiple parameter validation is common in web application security
+
+Raw protocol access reveals implementation details hidden by browser abstractions
+
+Developer tools expose hidden data in comments, headers, and network traffic
+
+🎯 Key Techniques Mastered
+Protocol Crafting: Manually building HTTP requests with netcat
+
+Header Spoofing: Manipulating Host and User-Agent headers
+
+Parameter Injection: Adding and modifying GET parameters
+
+URL Encoding: Properly encoding spaces and special characters
+
+Response Analysis: Extracting data from all parts of HTTP responses
+
+Tool Versatility: Using multiple clients for different scenarios
+
+📝 Usage
+bash
+# Clone and explore HTTP techniques
+git clone https://github.com/username/csci400-lab8.git
+cd csci400-lab8
+
+# Review challenge solutions
+cat solutions/browser_techniques.md
+cat solutions/command_line_http.md
+cat solutions/programmatic_access.md
+
+# Practice with sample servers
+python3 http_practice_server.py
+📚 Requirements
+Web browser with developer tools
+
+curl command-line tool
+
+netcat (nc)
+
+Python 3 with requests library
+
+Basic HTTP protocol knowledge
+
+Access to pwn.college platform for original challenges
+
+📄 License
+Academic Use - CSCI 400 Course Materials
