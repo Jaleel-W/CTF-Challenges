@@ -1,0 +1,140 @@
+CSCI 400 - Lab 6 & 7: SQL Injection Fundamentals & Database Exploration
+https://img.shields.io/badge/pwn.college-Lab%25206%2520%2526%25207-blue
+https://img.shields.io/badge/SQL-Injection%2520Techniques-red
+https://img.shields.io/badge/Database-SQLite-green
+https://img.shields.io/badge/Security-Web%2520Vulnerabilities-orange
+
+Comprehensive SQL injection lab covering 10 challenges that progress from basic database exploration to advanced SQL techniques including string manipulation, metadata querying, and expression-based data extraction.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Labs 6 & 7, focusing on SQL injection fundamentals and database exploitation techniques using SQLite.
+
+🔍 Challenge Categories
+Basic SQL Queries - Database exploration and simple data retrieval
+
+Filtering Techniques - Using WHERE clauses and LIKE operators
+
+Column Selection - Identifying and querying specific columns
+
+String Manipulation - Using SUBSTR and other string functions
+
+Expression-Based Extraction - Complex data reconstruction
+
+Metadata Exploitation - Querying sqlite_master and database schema
+
+🛠️ Skills Demonstrated
+sql
+-- Database exploration
+SELECT name FROM sqlite_master WHERE type='table';
+
+-- Schema analysis
+SELECT sql FROM sqlite_master WHERE name='table_name';
+
+-- Pattern-based filtering
+SELECT column FROM table WHERE column LIKE 'pwn.college%';
+
+-- String manipulation
+SELECT substr(column, start, length) FROM table;
+
+-- Complex data extraction
+SELECT instr(payload, 1, 5) AS part1 FROM payloads;
+SQLite Database Navigation - Mastering sqlite_master and schema analysis
+
+Pattern Recognition - Identifying flag formats and data patterns
+
+String Manipulation - Using SUBSTR, INSTR, and other string functions
+
+Incremental Data Extraction - Piecewise reconstruction of large data
+
+Error-Based Learning - Using SQL errors to understand database structure
+
+Metadata Analysis - Leveraging database metadata for exploitation
+
+📂 Challenge Solutions
+Challenge	Key Technique	SQL Concepts
+SQL Queries	Basic table exploration	SELECT * FROM table
+Filtering SQL	Pattern matching	WHERE column LIKE 'pattern%'
+Choosing Columns	Schema analysis	sqlite_master querying
+Exclusionary Filtering	Negative conditions	NOT LIKE operators
+Filtering Strings	String functions	SUBSTR, pattern matching
+SELECTing Expressions	Data reconstruction	INSTR with offsets
+Composite Conditions	Complex WHERE clauses	Multiple conditions
+Reaching Your LIMITS	Result limiting	LIMIT, ORDER BY
+Querying Metadata	Dynamic table discovery	Schema exploitation
+💻 Technical Implementation
+Database Exploration
+sql
+-- Discover all tables
+SELECT name FROM sqlite_master WHERE type='table';
+
+-- Examine table structure
+SELECT sql FROM sqlite_master WHERE name='target_table';
+
+-- Extract flag using pattern matching
+SELECT column FROM table WHERE column LIKE 'pwn.college%' LIMIT 1;
+Advanced String Manipulation
+sql
+-- Piecewise data extraction
+SELECT substr(record, 1, 12) FROM fragments 
+WHERE substr(record, 1, 12) = 'pwn.college{}';
+
+-- Multi-part reconstruction
+SELECT instr(payload, 1, 5) AS part1,
+       instr(payload, 6, 5) AS part2 
+FROM payloads;
+Dynamic Table Handling
+sql
+-- Handle randomly named tables
+SELECT name FROM sqlite_master WHERE type='table';
+-- Then use discovered table name
+SELECT solution FROM HmPSdO2V ORDER BY rowid ASC LIMIT 1;
+🔐 Security Insights
+SQL Injection vulnerabilities often stem from improper input sanitization
+
+Database metadata (sqlite_master) provides blueprint for entire database structure
+
+Pattern matching is essential for finding specific data in large datasets
+
+String manipulation functions can bypass length restrictions and filters
+
+Error messages often reveal crucial information about database structure
+
+Incremental extraction techniques overcome output limitations
+
+🎯 Key Techniques Mastered
+Schema Discovery: Using sqlite_master to map database structure
+
+Pattern-Based Filtering: Leveraging LIKE operators with wildcards
+
+Substring Extraction: Using SUBSTR for controlled data exposure
+
+Expression Building: Creating complex SELECT statements for data reconstruction
+
+Error Analysis: Interpreting SQL errors to refine queries
+
+Result Limiting: Using LIMIT and ORDER BY for targeted data retrieval
+
+📝 Usage
+bash
+# Clone and explore SQL techniques
+git clone https://github.com/username/csci400-lab6-7.git
+cd csci400-lab6-7
+
+# Review challenge solutions
+cat solutions/basic_queries.sql
+cat solutions/advanced_filtering.sql
+cat solutions/metadata_exploitation.sql
+
+# Practice with SQLite
+sqlite3 practice.db < examples/schema_exploration.sql
+📚 Requirements
+SQLite3
+
+Basic SQL knowledge
+
+Understanding of database concepts
+
+Access to pwn.college platform for original challenges
+
+📄 License
+Academic Use - CSCI 400 Course Materials
