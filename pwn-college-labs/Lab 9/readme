@@ -1,0 +1,147 @@
+CSCI 400 - Lab 9: HTTP Forms, Redirects & Advanced Web Communication
+https://img.shields.io/badge/pwn.college-Lab%25209-blue
+https://img.shields.io/badge/HTTP-POST%2520Requests-red
+https://img.shields.io/badge/Web-Form%2520Handling-green
+https://img.shields.io/badge/Security-Client%2520Validation-orange
+
+Advanced web communication lab covering HTTP form handling, multi-parameter submissions, and redirect management using curl, netcat, and Python across 10 challenges.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 9, focusing on HTTP POST requests, form data handling, and redirect management using multiple client tools and programming approaches.
+
+🔍 Challenge Categories
+HTTP Forms - POST request handling with form data
+
+Multiple Form Fields - Complex parameter validation
+
+Client Validation - Server-side client detection and restrictions
+
+Redirect Handling - Manual and automatic redirect following
+
+Tool-Specific Requirements - Challenges requiring specific clients (curl, netcat, Python)
+
+🛠️ Skills Demonstrated
+python
+# Python form submission
+import requests
+data = {'challenge_key': 'bxfzwxzl'}
+response = requests.post('http://challenge.localhost/hack', data=data)
+
+# Raw HTTP POST with netcat
+POST /pass HTTP/1.1
+Host: challenge.localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 15
+
+verify=kuzyuwlx
+HTTP POST Mastery - Form data submission with proper headers
+
+Multi-Parameter Handling - Managing complex form validations
+
+Client Detection Bypass - Meeting server-side client requirements
+
+Redirect Management - Manual and automatic redirect following
+
+Content-Length Calculation - Precise header construction for raw HTTP
+
+Tool-Specific Techniques - Leveraging unique capabilities of each HTTP client
+
+📂 Challenge Solutions
+Challenge	Tools Used	Key Techniques
+HTTP Forms	Curl	Basic form submission
+HTTP Forms (curl)	Curl	Client-specific validation
+HTTP Forms (netcat)	Netcat	Raw POST request crafting
+HTTP Forms (python)	Python requests	Programmatic form submission
+HTTP Forms Without Forms	Curl	POST data without HTML forms
+Multiple Form Fields (curl)	Curl	Multi-parameter form data
+Multiple Form Fields (netcat)	Netcat	Complex POST body construction
+HTTP Redirects (netcat)	Netcat	Manual redirect following
+HTTP Redirects (curl)	Curl	Automatic redirect following
+HTTP Redirects (python)	Python requests	Library-based redirect handling
+💻 Technical Implementation
+Form Data Submission
+bash
+# Curl with multiple form fields
+curl -X POST http://challenge.localhost/verify \
+  -d 'secret=gagement' \
+  -d 'security_token=wmgxymmr' \
+  -d 'security=bvcfucsm'
+
+# Netcat with precise Content-Length
+echo -e "POST /trial HTTP/1.1\r\nHost: challenge.localhost\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 64\r\n\r\nsecure_key=vbwurlji&pin=tszszeta&secret=gpgwdmyp&verify=shejrec1" | nc challenge.localhost 80
+Redirect Handling
+bash
+# Manual redirect following with netcat
+# First request to get redirect location
+echo -e "GET / HTTP/1.1\r\nHost: challenge.localhost\r\n\r\n" | nc challenge.localhost 80
+# Then request the redirect location
+echo -e "GET /kjCfzHPY-gateway HTTP/1.1\r\nHost: challenge.localhost\r\n\r\n" | nc challenge.localhost 80
+
+# Automatic redirect following with curl
+curl -L http://challenge.localhost/
+Python Form Handling
+python
+import requests
+
+# Basic form submission
+response = requests.post('http://challenge.localhost/hack', 
+                        data={'challenge_key': 'bxfzwxzl'})
+print(response.text)
+
+# With custom headers
+headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0'}
+response = requests.post('http://127.0.0.1/mission', 
+                        data={'secure_key': 'uchnsrxs'}, 
+                        headers=headers)
+🔐 Security Insights
+Client validation can be bypassed by spoofing User-Agent headers
+
+Form data is simply POST parameters that can be sent without actual HTML forms
+
+Content-Length headers must be precise for raw HTTP requests to succeed
+
+Redirects reveal hidden endpoints that may contain sensitive functionality
+
+Multi-parameter validation requires exact parameter names and values
+
+Server-side client detection can restrict access to specific tools
+
+🎯 Key Techniques Mastered
+Form Data Construction: Proper formatting of application/x-www-form-urlencoded data
+
+Multi-Parameter Management: Handling forms with multiple required fields
+
+Client Spoofing: Meeting server-side client requirements through header manipulation
+
+Redirect Navigation: Both manual and automatic redirect handling
+
+Raw HTTP Crafting: Building complete HTTP requests from scratch
+
+Tool Selection: Choosing the right client for specific challenge requirements
+
+📝 Usage
+bash
+# Clone and explore HTTP form techniques
+git clone https://github.com/username/csci400-lab9.git
+cd csci400-lab9
+
+# Review challenge solutions
+cat solutions/http_forms.md
+cat solutions/redirect_handling.md
+cat solutions/multi_parameter_forms.md
+
+# Practice with sample form submissions
+python3 form_submission_practice.py
+📚 Requirements
+curl command-line tool
+
+netcat (nc)
+
+Python 3 with requests library
+
+Understanding of HTTP POST methods and form data
+
+Access to pwn.college platform for original challenges
+
+📄 License
+Academic Use - CSCI 400 Course Materials
