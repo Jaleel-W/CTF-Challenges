@@ -1,0 +1,144 @@
+CSCI 400 - Lab 11: Network Communication & Port Scanning
+https://img.shields.io/badge/pwn.college-Lab%252011-blue
+https://img.shields.io/badge/Networking-TCP%252FIP-red
+https://img.shields.io/badge/Security-Port%2520Scanning-green
+https://img.shields.io/badge/Tools-nmap%2520%2526%2520netcat-orange
+
+Hands-on networking lab covering TCP communication, port scanning, and network service discovery using netcat and nmap across enterprise-scale networks.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 11, focusing on network communication fundamentals, port scanning techniques, and service discovery in complex network environments.
+
+🔍 Challenge Categories
+Basic TCP Communication - Netcat connectivity and data transmission
+
+Network Service Interaction - Sending and receiving data through sockets
+
+Port Listening - Setting up network listeners and service endpoints
+
+Network Scanning - Discovering services across subnets and large IP ranges
+
+Advanced Scanning Techniques - Optimized nmap scans for efficiency
+
+🛠️ Skills Demonstrated
+bash
+# Basic netcat communication
+nc 10.0.0.2 31337
+
+# Network listening
+nc -l -p 31337
+
+# Port scanning with nmap
+nmap -p 31337 10.0.0.0/24 -Pn --open
+
+# Advanced scanning
+nmap -p 31337 10.0.0.0/18 -T5 --min-rate 5000
+TCP Socket Programming - Raw network communication with netcat
+
+Port Scanning Methodology - Systematic network service discovery
+
+Subnet Navigation - Scanning across CIDR ranges (/24, /18)
+
+Network Service Identification - Detecting and connecting to open ports
+
+Scan Optimization - Using timing templates and rate limiting
+
+Enterprise Network Reconnaissance - Large-scale network exploration
+
+📂 Challenge Solutions
+Challenge	Tools Used	Key Techniques
+Connect	Netcat	Basic TCP connection
+Send	Netcat	Data transmission
+Shutdown	Netcat	Connection management
+Listen	Netcat	Service listening
+Scan 1	Nmap + Netcat	Basic subnet scanning
+Scan 2	Nmap + Netcat	Advanced network reconnaissance
+💻 Technical Implementation
+Basic Network Communication
+bash
+# Connect to TCP service
+nc 10.0.0.2 31337
+
+# Send data to service
+echo "Hello, World!" | nc 10.0.0.2 31337
+
+# Listen for incoming connections
+nc -l -p 31337
+Network Scanning
+bash
+# Basic port scan on /24 subnet
+nmap -p 31337 10.0.0.0/24 -Pn --open
+
+# Aggressive scan on larger subnet
+nmap -p 31337 10.0.0.0/18 -n -Pn --open -T5 --min-rate 5000 --max-retries 0
+
+# Connect to discovered services
+nc -nv 10.0.0.224 31337
+nc -nv 10.0.170.2 31337
+Advanced Nmap Techniques
+bash
+# Greppable output for automation
+nmap -p 31337 10.0.0.0/18 -oG - | grep '/open/'
+
+# Optimized scanning parameters
+-T5          # Timing template (insane speed)
+--min-rate 5000  # Minimum packets per second
+--max-retries 0  # No retransmissions for speed
+-Pn          # No host discovery (treat all hosts as up)
+🔐 Security Insights
+Port 31337 is commonly associated with "elite" or backdoor services
+
+Network segmentation (different subnets) requires broader scanning strategies
+
+Service discovery is the first step in network penetration testing
+
+Scan timing optimization balances speed against detection risk
+
+Raw socket communication demonstrates the foundation of all network services
+
+Large-scale scanning requires efficient tools and methodologies
+
+🎯 Key Techniques Mastered
+Netcat Proficiency: Using nc for both client and server roles
+
+Subnet Calculation: Understanding CIDR notation and IP ranges
+
+Service Discovery: Identifying open ports and available services
+
+Scan Optimization: Balancing speed, accuracy, and network impact
+
+Network Protocol Understanding: TCP handshakes and connection lifecycle
+
+Enterprise Reconnaissance: Techniques for large network environments
+
+📝 Usage
+bash
+# Clone and explore network techniques
+git clone https://github.com/username/csci400-lab11.git
+cd csci400-lab11
+
+# Review network scanning methodologies
+cat solutions/basic_networking.md
+cat solutions/port_scanning.md
+cat solutions/advanced_recon.md
+
+# Practice with local network (educational purposes only)
+nmap -p 22,80,443 127.0.0.1
+📚 Requirements
+Linux environment
+
+netcat (nc)
+
+nmap
+
+Basic understanding of TCP/IP networking
+
+Understanding of CIDR notation and subnets
+
+Access to pwn.college platform for original challenges
+
+⚠️ Legal & Ethical Notice
+Important: The techniques in this lab are for educational purposes only. Always ensure you have explicit permission before scanning or accessing any network systems. Unauthorized port scanning and network access may violate laws and organizational policies.
+
+📄 License
+Academic Use - CSCI 400 Course Materials
