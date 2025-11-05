@@ -1,0 +1,133 @@
+CSCI 400 - Lab 12: Network Security & Firewall Configuration
+https://img.shields.io/badge/pwn.college-Lab%252012-blue
+https://img.shields.io/badge/Networking-Firewalls-red
+https://img.shields.io/badge/Security-iptables-green
+https://img.shields.io/badge/Linux-Kernel%2520Networking-orange
+
+Advanced network security lab covering firewall configuration, traffic monitoring, and packet filtering using iptables to control network access and communication.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 12, focusing on network security principles, firewall configuration, and traffic control using Linux iptables.
+
+🔍 Challenge Categories
+Network Monitoring - Traffic analysis and network observation
+
+Firewall Configuration - Packet filtering and access control
+
+Rule Management - Creating, ordering, and managing iptables rules
+
+Traffic Control - Allowing/denying specific network communications
+
+Chain Manipulation - Working with INPUT and OUTPUT chains
+
+🛠️ Skills Demonstrated
+bash
+# Basic firewall rules
+iptables -I INPUT -p tcp --dport 31337 -j DROP
+iptables -I INPUT -p udp --dport 31337 -j DROP
+
+# Specific host filtering
+iptables -I INPUT 1 -p tcp -s 10.0.0.2 --dport 31337 -j ACCEPT
+iptables -I INPUT 2 -p tcp -s 10.0.0.3 --dport 31337 -j DROP
+
+# OUTPUT chain control
+iptables -I OUTPUT 1 -p tcp -d 10.0.0.2 --dport 31337 -j ACCEPT
+iptables Mastery - Linux firewall configuration and management
+
+Packet Filtering - Controlling network traffic based on various criteria
+
+Rule Prioritization - Understanding rule order and chain processing
+
+Network Access Control - Implementing security policies through filtering
+
+Traffic Monitoring - Network observation and analysis techniques
+
+Security Policy Implementation - Translating security requirements to firewall rules
+
+📂 Challenge Solutions
+Challenge	Focus Area	Key Techniques
+Monitor 1	Network observation	Traffic monitoring
+Monitor 2	Advanced monitoring	Deep packet analysis
+Firewall 1	Basic filtering	Port-based blocking
+Firewall 2	Host-based rules	Source IP filtering
+Firewall 3	OUTPUT chain control	Egress traffic management
+💻 Technical Implementation
+Basic Firewall Configuration
+bash
+# Block all traffic on port 31337
+iptables -I INPUT -p tcp --dport 31337 -j DROP
+iptables -I INPUT -p udp --dport 31337 -j DROP
+Host-Based Access Control
+bash
+# Allow specific host, deny others
+iptables -I INPUT 1 -p tcp -s 10.0.0.2 --dport 31337 -j ACCEPT
+iptables -I INPUT 2 -p tcp -s 10.0.0.3 --dport 31337 -j DROP
+Egress Traffic Control
+bash
+# Control outgoing connections
+iptables -I OUTPUT 1 -p tcp -d 10.0.0.2 --dport 31337 -j ACCEPT
+iptables -I OUTPUT 2 -p tcp --dport 31337 -j DROP
+
+# Verify rule configuration
+iptables -L OUTPUT -n --line-numbers
+🔐 Security Insights
+Rule order matters - iptables processes rules sequentially
+
+INPUT vs OUTPUT chains control incoming vs outgoing traffic
+
+Specific rules should precede general rules for proper filtering
+
+Port-based blocking is fundamental for service security
+
+Host-based filtering enables granular access control
+
+Egress filtering prevents unauthorized outbound connections
+
+🎯 Key Techniques Mastered
+Firewall Rule Creation: Using iptables to create custom filtering rules
+
+Rule Order Management: Understanding and manipulating rule precedence
+
+Chain Selection: Choosing between INPUT, OUTPUT, and FORWARD chains
+
+Traffic Specification: Filtering by protocol, port, source, and destination
+
+Policy Verification: Testing and validating firewall configurations
+
+Network Segmentation: Implementing security through network isolation
+
+📝 Usage
+bash
+# Clone and explore firewall techniques
+git clone https://github.com/username/csci400-lab12.git
+cd csci400-lab12
+
+# Review firewall configuration examples
+cat solutions/basic_firewall.md
+cat solutions/advanced_filtering.md
+cat solutions/egress_control.md
+
+# Practice iptables commands (use with caution)
+sudo iptables -L  # List current rules
+⚠️ Important Notes
+Warning: iptables commands can disrupt network connectivity if misconfigured. Always test in controlled environments and have backup access methods.
+
+bash
+# Safe practice: backup current rules before modifications
+sudo iptables-save > iptables-backup.rules
+
+# Restore if needed
+sudo iptables-restore < iptables-backup.rules
+📚 Requirements
+Linux environment with iptables
+
+Root/sudo access for firewall configuration
+
+Understanding of TCP/IP networking
+
+Basic command-line proficiency
+
+Access to pwn.college platform for original challenges
+
+📄 License
+Academic Use - CSCI 400 Course Materials
