@@ -1,0 +1,141 @@
+CSCI 400 - Lab 13: System Destruction & Recovery
+https://img.shields.io/badge/pwn.college-Lab%252013-blue
+https://img.shields.io/badge/Linux-System%2520Recovery-red
+https://img.shields.io/badge/Security-DoS%2520Attacks-green
+https://img.shields.io/badge/Destruction-Controlled%2520Chaos-orange
+
+Advanced Linux system manipulation lab covering destructive operations, resource exhaustion attacks, and system recovery techniques in controlled environments.
+
+🚀 Lab Overview
+This repository contains solutions and documentation for CSCI 400 Lab 13, focusing on system resource management, destructive commands, and recovery procedures for critical Linux system scenarios.
+
+🔍 Challenge Categories
+Fork Bomb - Process exhaustion and system resource attacks
+
+Disk-Space Doomsday - Storage exhaustion and cleanup procedures
+
+rm -rf / - System destruction and recovery techniques
+
+System Resilience - Understanding and mitigating destructive operations
+
+🛠️ Skills Demonstrated
+bash
+# Disk space exhaustion
+yes > /home/hacker/fill_disk.txt
+
+# Resource monitoring and cleanup
+rm /home/hacker/fill_disk.txt
+
+# System recovery procedures
+/challenge/check
+Resource Exhaustion - Intentionally consuming system resources
+
+Disk Space Management - Understanding storage limits and quotas
+
+Destructive Command Handling - Safe execution of dangerous operations
+
+System Recovery - Restoring functionality after resource exhaustion
+
+Process Management - Handling fork bombs and process limits
+
+Quota Enforcement - Working within system-imposed limitations
+
+📂 Challenge Solutions
+Challenge	Focus Area	Key Techniques
+The Fork Bomb	Process exhaustion	Fork bomb creation and mitigation
+Disk-Space Doomsday	Storage exhaustion	Disk filling and cleanup
+rm -rf /	System destruction	File system recovery
+Life after rm -rf /	Post-destruction recovery	System restoration
+💻 Technical Implementation
+Disk Space Exhaustion
+bash
+# Fill disk until quota is reached
+yes > /home/hacker/fill_disk.txt
+# Output: yes: standard output: Disk quota exceeded
+
+# Verify space exhaustion
+/challenge/check
+
+# Cleanup and restore
+rm /home/hacker/fill_disk.txt
+/challenge/check
+Resource Management
+bash
+# Monitor disk usage
+df -h /home/hacker
+
+# Check process limits
+ulimit -a
+
+# Verify restoration
+/challenge/check
+🔐 Security Insights
+Resource exhaustion is a common denial-of-service (DoS) attack vector
+
+Disk quotas help mitigate storage-based attacks
+
+Fork bombs can cripple systems by exhausting process tables
+
+rm -rf / demonstrates the importance of backup strategies
+
+System recovery procedures are critical for business continuity
+
+Controlled environments allow safe exploration of destructive scenarios
+
+⚠️ Critical Warnings
+EXTREME CAUTION: The techniques in this lab are extremely dangerous and should only be practiced in controlled, isolated environments. Never execute these commands on production systems or personal machines.
+
+bash
+# DANGEROUS COMMANDS - DO NOT RUN ON REAL SYSTEMS
+:(){ :|:& };:  # Fork bomb
+rm -rf /       # System destruction
+yes > file     # Disk exhaustion
+🎯 Key Techniques Mastered
+Controlled Destruction: Safely executing dangerous operations in isolated environments
+
+Resource Monitoring: Tracking system resources and identifying exhaustion points
+
+Recovery Procedures: Restoring system functionality after intentional damage
+
+Quota Management: Working within and testing system-imposed limits
+
+Process Control: Understanding and managing process creation and limits
+
+System Resilience: Building awareness of system vulnerabilities and protections
+
+📝 Usage
+bash
+# Clone and review destruction techniques (THEORETICAL ONLY)
+git clone https://github.com/username/csci400-lab13.git
+cd csci400-lab13
+
+# Review controlled environment procedures
+cat solutions/disk_exhaustion.md
+cat solutions/recovery_procedures.md
+
+# WARNING: These techniques are for educational purposes only
+# and should only be practiced in specially designed environments
+🛡️ Safety Protocols
+This lab emphasizes:
+
+Isolated Environments: All destructive operations occur in controlled VMs
+
+Educational Context: Understanding threats to better defend against them
+
+Recovery Focus: Emphasizing restoration and resilience
+
+Ethical Boundaries: Clear distinction between educational and malicious use
+
+📚 Requirements
+Controlled, isolated Linux environment (VM/lab)
+
+Understanding of Linux system administration
+
+Basic command-line proficiency
+
+Access to pwn.college platform for original challenges
+
+CAUTION: Never practice these techniques outside designated environments
+
+📄 License
+Academic Use - CSCI 400 Course Materials
